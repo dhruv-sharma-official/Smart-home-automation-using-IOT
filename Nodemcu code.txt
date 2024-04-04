@@ -1,0 +1,72 @@
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+
+
+#define BLYNK_AUTH_TOKEN "authtoken"
+char auth[] = BLYNK_AUTH_TOKEN;
+
+
+//   ///////////WIFI here
+char ssid[] = "*********";
+char pass[] = "*********";
+
+/////////// appliances code from here
+BLYNK_WRITE (V0){                 // Lights
+  int value = param.asInt();
+  // Serial.println(value);
+  if(value == 1){
+    Serial.println(" A");
+  }
+  if(value == 0){
+    Serial.println(" a");
+  }
+  
+}
+BLYNK_WRITE (V1){                 // FAN
+  int value = param.asInt();
+  // Serial.println(value);
+  if(value == 1){
+    Serial.println(" B");
+  }
+  if(value == 0){
+    Serial.println(" b");
+  }
+  
+}
+BLYNK_WRITE (V2){           // DOOR
+  int value = param.asInt();
+  // Serial.println(value);
+  if(value == 1){
+    Serial.println(" C");
+  }
+  if(value == 0){
+    Serial.println(" c");
+  }
+  
+}
+BLYNK_WRITE (V3){                 // ////// TV
+  int value = param.asInt();
+  // Serial.println(value);
+  if(value == 1){
+    Serial.println(" D");
+  }
+  if(value == 0){
+    Serial.println(" d");
+  }
+  
+}
+
+
+
+void setup()
+{
+  // Debug console
+  Serial.begin(9600);
+
+  Blynk.begin(auth, ssid, pass);
+}
+
+void loop()
+{
+  Blynk.run();
+}
